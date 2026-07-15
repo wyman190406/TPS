@@ -1,0 +1,10 @@
+{
+  "name":"trading-product-specification",
+  "version":"1.0.0-alpha",
+  "private":true,
+  "scripts":{
+    "validate":"echo TODO: TPS validator",
+    "docs":"echo TODO: Build docs",
+    "build":"echo TODO: Build site"
+  }
+}

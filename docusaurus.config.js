@@ -1,0 +1,1 @@
+module.exports={title:'TPS',url:'https://example.com',baseUrl:'/'};
