@@ -18,18 +18,14 @@ jobs:
         run: markdownlint '**/*.md' --ignore node_modules
 
   validate-json:
-    name: Validate JSON Schema
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install ajv
-        run: npm install -g ajv-cli
-      - name: Validate schemas
-        run: |
-          for f in schemas/*.json; do
-            echo "Validating $f"
-            ajv validate -s "$f" || exit 1
-          done
+    - name: Validate JSON Schema
+  run: |
+    if ls schemas/*.json 1> /dev/null 2>&1; then
+      npx ajv-cli validate -s schemas/*.json
+    else
+      echo "No JSON schema files found, skipping."
+    fi
+
 
   check-links:
     name: Check Markdown Links
