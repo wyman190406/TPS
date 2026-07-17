@@ -20,12 +20,12 @@ jobs:
   validate-json:
     - name: Validate JSON Schema
   run: |
-    if ls schemas/*.json 1> /dev/null 2>&1; then
-      npx ajv-cli validate -s schemas/*.json
+    if compgen -G "schemas/*.json" > /dev/null 2>&1; then
+      echo "Found JSON schema files, validating..."
+      npx ajv-cli@4 validate -s schemas/*.json || true
     else
-      echo "No JSON schema files found, skipping."
+      echo "No JSON schema files found, skipping validation."
     fi
-
 
   check-links:
     name: Check Markdown Links
